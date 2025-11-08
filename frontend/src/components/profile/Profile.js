@@ -25,6 +25,7 @@ const Profile = () => {
       setLoading(true);
       try {
         const token = localStorage.getItem('token');
+        // --- CHANGE: Made paths relative ---
         const [createdRes, joinedRes] = await Promise.all([
           axios.get('/api/gardens/user/created', { headers: { Authorization: `Bearer ${token}` } }),
           axios.get('/api/gardens/user/my-gardens', { headers: { Authorization: `Bearer ${token}` } })

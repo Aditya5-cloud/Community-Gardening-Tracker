@@ -17,6 +17,7 @@ const ForgotPassword = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      // --- CHANGE: Made path relative ---
       await axios.post('/api/auth/forgot-password', form);
       toast.success('Password reset successful! Please log in.');
       navigate('/login');

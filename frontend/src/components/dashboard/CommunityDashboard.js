@@ -31,6 +31,7 @@ const CommunityDashboard = () => {
           return;
         }
 
+        // --- CHANGE: Made paths relative ---
         const [mine, created] = await Promise.all([
           axios.get('/api/gardens/user/my-gardens', {
             headers: { Authorization: `Bearer ${token}` }
@@ -57,6 +58,7 @@ const CommunityDashboard = () => {
   const handleDelete = async (gardenId) => {
     setDeletingGarden(gardenId);
     try {
+      // --- CHANGE: Made path relative ---
       await axios.delete(`/api/gardens/${gardenId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
@@ -71,6 +73,7 @@ const CommunityDashboard = () => {
   const handleLeave = async (gardenId) => {
     setLeavingGarden(gardenId);
     try {
+      // --- CHANGE: Made path relative ---
       await axios.post(`/api/gardens/${gardenId}/leave`, {}, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

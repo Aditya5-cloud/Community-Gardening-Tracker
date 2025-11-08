@@ -79,6 +79,7 @@ export const AuthProvider = ({ children }) => {
     if (state.token) {
       setAuthToken(state.token);
       try {
+        // --- CHANGE: Made path relative ---
         const res = await axios.get('/api/auth/user');
         dispatch({ type: 'USER_LOADED', payload: res.data });
       } catch (err) {
@@ -94,6 +95,7 @@ export const AuthProvider = ({ children }) => {
   const register = async (formData) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
+      // --- CHANGE: Made path relative ---
       const res = await axios.post('/api/auth/register', formData);
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       setAuthToken(res.data.token);
@@ -111,6 +113,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (formData) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true });
+      // --- CHANGE: Made path relative ---
       const res = await axios.post('/api/auth/login', formData);
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       setAuthToken(res.data.token);
@@ -134,6 +137,7 @@ export const AuthProvider = ({ children }) => {
   // Update user profile
   const updateProfile = async (formData) => {
     try {
+      // --- CHANGE: Made path relative ---
       const res = await axios.put('/api/auth/profile', formData);
       dispatch({ type: 'UPDATE_USER', payload: res.data });
       toast.success('Profile updated successfully!');
@@ -148,6 +152,7 @@ export const AuthProvider = ({ children }) => {
   // Change password
   const changePassword = async (formData) => {
     try {
+      // --- CHANGE: Made path relative ---
       await axios.put('/api/auth/password', formData);
       toast.success('Password changed successfully!');
       return { success: true };
@@ -161,6 +166,7 @@ export const AuthProvider = ({ children }) => {
   // Verify token
   const verifyToken = async () => {
     try {
+      // --- CHANGE: Made path relative ---
       const res = await axios.get('/api/auth/verify');
       return res.data.valid;
     } catch (err) {
@@ -195,5 +201,4 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
-}; 
-
+};

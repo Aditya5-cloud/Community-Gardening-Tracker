@@ -20,6 +20,7 @@ const CommunityChat = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
+        // --- CHANGE: Made path relative ---
         const res = await axios.get(`/api/chat/garden/${gardenId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
@@ -46,6 +47,7 @@ const CommunityChat = () => {
     if (!newMessage.trim()) return;
 
     try {
+      // --- CHANGE: Made path relative ---
       const res = await axios.post(`/api/chat/garden/${gardenId}`, { text: newMessage }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

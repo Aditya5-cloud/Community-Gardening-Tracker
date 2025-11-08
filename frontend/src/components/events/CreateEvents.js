@@ -22,6 +22,7 @@ const CreateEvent = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      // --- CHANGE: Made path relative ---
       await axios.post(`/api/events/garden/${gardenId}`, form, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

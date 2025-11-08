@@ -104,6 +104,7 @@ const GardenDashboard = () => {
 
   const fetchGardenData = async () => {
     try {
+      // --- CHANGE: Made paths relative ---
       const [gardenRes, plantsRes, eventsRes, tasksRes] = await Promise.all([
         axios.get(`/api/gardens/${gardenId}`),
         axios.get(`/api/plants/garden/${gardenId}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }),
@@ -131,6 +132,7 @@ useEffect(() => {
   const handleDeletePlant = async (plantId) => {
     if(window.confirm('Are you sure you want to delete this plant?')) {
       try {
+        // --- CHANGE: Made path relative ---
         await axios.delete(`/api/plants/${plantId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
@@ -145,6 +147,7 @@ useEffect(() => {
 
   const handleCompleteTask = async (taskId) => {
     try {
+      // --- CHANGE: Made path relative ---
       const res = await axios.patch(`/api/tasks/${taskId}/status`, { status: 'completed' }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

@@ -41,6 +41,7 @@ const CreateCommunity = () => {
         console.log('Creating garden with data:', form);
         // console.log('Token:', localStorage.getItem('token'));
         
+        // --- CHANGE: Made path relative ---
         const res = await axios.post('/api/gardens', form, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });

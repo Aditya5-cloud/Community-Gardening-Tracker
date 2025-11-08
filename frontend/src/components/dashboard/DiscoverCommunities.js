@@ -16,12 +16,14 @@ const DiscoverCommunities = () => {
     const fetchCommunities = async () => {
       setLoading(true);
       try {
+        // --- CHANGE: Made path relative ---
         // Fetch all public communities first. This endpoint is public.
         const allRes = await axios.get('/api/gardens');
         let availableCommunities = allRes.data;
 
         // If the user is logged in, fetch their gardens to filter the list
         if (user && localStorage.getItem('token')) {
+          // --- CHANGE: Made path relative ---
           const mineRes = await axios.get('/api/gardens/user/my-gardens', {
             headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
           });
@@ -54,6 +56,7 @@ const DiscoverCommunities = () => {
         navigate('/login'); // Redirect to login if not authenticated
         return;
       }
+      // --- CHANGE: Made path relative ---
       await axios.post(`/api/gardens/${gardenId}/members`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });

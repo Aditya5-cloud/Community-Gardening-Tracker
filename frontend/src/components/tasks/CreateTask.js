@@ -22,6 +22,7 @@ const CreateTask = () => {
     e.preventDefault();
     setLoading(true);
     try {
+      // --- CHANGE: Made path relative ---
       await axios.post(`/api/tasks/garden/${gardenId}`, form, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });

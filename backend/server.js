@@ -60,9 +60,16 @@ app.use('*', (req, res) => {
   res.status(404).json({ message: 'Route not found' });
 });
 
-const PORT = process.env.PORT || 5000;
+// --- VERCEL DEPLOYMENT CHANGE ---
+// We comment out the app.listen() block because Vercel handles this for us.
+// We just need to export the 'app' for Vercel to use as a serverless function.
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-});
+// const PORT = process.env.PORT || 5000;
+
+// app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+//   console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+// });
+
+// Export the app for Vercel
+module.exports = app;
