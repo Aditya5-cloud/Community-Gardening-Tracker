@@ -1,0 +1,435 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #fafafa;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-600 hover:bg-secondary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+  
+  .btn-ghost {
+    @apply text-gray-600 hover:text-gray-900 hover:bg-gray-100 font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-soft border border-gray-100 overflow-hidden;
+  }
+  
+  .card-hover {
+    @apply card hover:shadow-medium transition-shadow duration-200;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-200;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+  
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .badge-success {
+    @apply badge bg-green-100 text-green-800;
+  }
+  
+  .badge-warning {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+  
+  .badge-error {
+    @apply badge bg-red-100 text-red-800;
+  }
+  
+  .badge-info {
+    @apply badge bg-blue-100 text-blue-800;
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full h-6 w-6 border-b-2 border-primary-600;
+  }
+  
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-50 via-white to-secondary-50;
+  }
+  
+  .garden-card {
+    @apply card-hover p-6 hover:scale-105 transition-transform duration-200;
+  }
+  
+  .plant-card {
+    @apply card-hover p-4 hover:scale-102 transition-transform duration-200;
+  }
+  
+  .task-card {
+    @apply card-hover p-4 border-l-4;
+  }
+  
+  .task-card-urgent {
+    @apply task-card border-l-red-500;
+  }
+  
+  .task-card-high {
+    @apply task-card border-l-orange-500;
+  }
+  
+  .task-card-medium {
+    @apply task-card border-l-yellow-500;
+  }
+  
+  .task-card-low {
+    @apply task-card border-l-green-500;
+  }
+  
+  .event-card {
+    @apply card-hover p-6 relative overflow-hidden;
+  }
+  
+  .event-card::before {
+    content: '';
+    @apply absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-primary-500 to-secondary-500;
+  }
+  
+  .navbar {
+    @apply bg-white shadow-soft border-b border-gray-100 sticky top-0 z-50;
+  }
+  
+  .sidebar {
+    @apply bg-white shadow-medium border-r border-gray-100 h-screen overflow-y-auto;
+  }
+  
+  .sidebar-item {
+    @apply flex items-center px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-primary-600 transition-colors duration-200 rounded-lg mx-2 mb-1;
+  }
+  
+  .sidebar-item.active {
+    @apply bg-primary-50 text-primary-600 font-medium;
+  }
+  
+  .modal-overlay {
+    @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4;
+  }
+  
+  .modal-content {
+    @apply bg-white rounded-2xl shadow-large max-w-md w-full max-h-[90vh] overflow-y-auto;
+  }
+  
+  .tooltip {
+    @apply absolute z-10 px-3 py-2 text-sm text-white bg-gray-900 rounded-lg shadow-lg opacity-0 pointer-events-none transition-opacity duration-200;
+  }
+  
+  .tooltip.show {
+    @apply opacity-100;
+  }
+  
+  .progress-bar {
+    @apply w-full bg-gray-200 rounded-full h-2 overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-primary-500 to-secondary-500 transition-all duration-300;
+  }
+  
+  .status-indicator {
+    @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .status-active {
+    @apply status-indicator bg-green-100 text-green-800;
+  }
+  
+  .status-pending {
+    @apply status-indicator bg-yellow-100 text-yellow-800;
+  }
+  
+  .status-completed {
+    @apply status-indicator bg-blue-100 text-blue-800;
+  }
+  
+  .status-cancelled {
+    @apply status-indicator bg-red-100 text-red-800;
+  }
+  
+  .growth-stage {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+  }
+  
+  .growth-seed {
+    @apply growth-stage bg-brown-100 text-brown-800;
+  }
+  
+  .growth-seedling {
+    @apply growth-stage bg-green-100 text-green-800;
+  }
+  
+  .growth-vegetative {
+    @apply growth-stage bg-blue-100 text-blue-800;
+  }
+  
+  .growth-flowering {
+    @apply growth-stage bg-purple-100 text-purple-800;
+  }
+  
+  .growth-fruiting {
+    @apply growth-stage bg-orange-100 text-orange-800;
+  }
+  
+  .growth-harvested {
+    @apply growth-stage bg-gray-100 text-gray-800;
+  }
+  
+  .health-excellent {
+    @apply text-green-600;
+  }
+  
+  .health-good {
+    @apply text-blue-600;
+  }
+  
+  .health-fair {
+    @apply text-yellow-600;
+  }
+  
+  .health-poor {
+    @apply text-orange-600;
+  }
+  
+  .health-critical {
+    @apply text-red-600;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .backdrop-blur {
+    backdrop-filter: blur(10px);
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s infinite;
+  }
+  
+  @keyframes bounceGentle {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Leaflet map styles */
+.leaflet-container {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-tip {
+  background: white;
+}
+
+/* React Select custom styles */
+.react-select__control {
+  border-color: #d1d5db !important;
+  border-radius: 8px !important;
+  min-height: 42px !important;
+}
+
+.react-select__control--is-focused {
+  border-color: #22c55e !important;
+  box-shadow: 0 0 0 1px #22c55e !important;
+}
+
+.react-select__menu {
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.react-select__option--is-focused {
+  background-color: #f0fdf4 !important;
+  color: #166534 !important;
+}
+
+.react-select__option--is-selected {
+  background-color: #22c55e !important;
+  color: white !important;
+}
+
+/* React DatePicker custom styles */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.react-datepicker__input-container input:focus {
+  outline: none;
+  border-color: #22c55e;
+  box-shadow: 0 0 0 1px #22c55e;
+}
+
+.react-datepicker {
+  border-radius: 12px !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.react-datepicker__header {
+  background-color: #f9fafb !important;
+  border-bottom: 1px solid #e5e7eb !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+.react-datepicker__day--selected {
+  background-color: #22c55e !important;
+  color: white !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  background-color: #22c55e !important;
+  color: white !important;
+}
+
+/* React Modal custom styles */
+.ReactModal__Overlay {
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  backdrop-filter: blur(4px);
+}
+
+.ReactModal__Content {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* React Dropzone custom styles */
+.dropzone {
+  border: 2px dashed #d1d5db;
+  border-radius: 12px;
+  padding: 40px 20px;
+  text-align: center;
+  transition: all 0.2s ease;
+  background-color: #fafafa;
+}
+
+.dropzone:hover {
+  border-color: #22c55e;
+  background-color: #f0fdf4;
+}
+
+.dropzone.drag-active {
+  border-color: #22c55e;
+  background-color: #f0fdf4;
+  transform: scale(1.02);
+}
+
+/* Toast notifications */
+.Toastify__toast {
+  border-radius: 8px !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.Toastify__toast--success {
+  background-color: #22c55e !important;
+}
+
+.Toastify__toast--error {
+  background-color: #ef4444 !important;
+}
+
+.Toastify__toast--warning {
+  background-color: #f59e0b !important;
+}
+
+.Toastify__toast--info {
+  background-color: #3b82f6 !important;
+} 
