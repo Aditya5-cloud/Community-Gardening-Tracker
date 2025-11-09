@@ -1,0 +1,20 @@
+# This file MUST be in your /frontend folder
+
+# This tells Netlify your build settings
+[build]
+  publish = "build"
+  command = "npm run build"
+
+# This is the API proxy. It fixes your 404 errors.
+# It sends all /api requests to your Render backend.
+[[redirects]]
+  from = "/api/*"
+  to = "https://community-gardening-tracker.onrender.com/api/:splat" # <-- IMPORTANT: REPLACE THIS
+  status = 200
+  force = true # Ensures this rule runs first
+
+# This is the React Router fix. It fixes the "Page Not Found" on reload.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
