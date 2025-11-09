@@ -12,10 +12,14 @@ Community Dashboard:
 <img width="1912" height="897" alt="image" src="https://github.com/user-attachments/assets/4d8d0e7f-049c-436f-ab04-aea6adee4481" />
 
 🛠️ Tech Stack
+<<<<<<< HEAD
 
 <img width="693" height="435" alt="image" src="https://github.com/user-attachments/assets/9aa43fe4-92c9-432b-ba6b-5caf3a27a490" />
 
 
+=======
+  
+>>>>>>> 4bc552a (Fix: Final fix for the vercel)
 
 ✨ Key Features
 
