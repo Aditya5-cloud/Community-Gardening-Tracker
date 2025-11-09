@@ -9,7 +9,6 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "buildCommand": "cd frontend && npm install && npm run build",
         "outputDirectory": "frontend/build"
       }
     }
@@ -17,30 +16,23 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "/backend/api.js"
-    },
-    {
-      "handle": "filesystem"
+      "dest": "backend/api.js"
     },
     {
       "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/manifest.json",
-      "dest": "/manifest.json"
+      "dest": "frontend/build/static/$1"
     },
     {
       "src": "/favicon.ico",
-      "dest": "/favicon.ico"
+      "dest": "frontend/build/favicon.ico"
     },
     {
-      "src": "/asset-manifest.json",
-      "dest": "/asset-manifest.json"
+      "src": "/manifest.json",
+      "dest": "frontend/build/manifest.json"
     },
     {
       "src": "/(.*)",
-      "dest": "/index.html"
+      "dest": "frontend/build/index.html"
     }
   ]
 }
