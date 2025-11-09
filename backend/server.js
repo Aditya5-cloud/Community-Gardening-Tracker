@@ -1,86 +1,73 @@
 const express = require('express');
-const connectDB = require('./config/db');
+const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
-// const http = require('http'); // Removed - Conflicts with serverless
-// const { Server } = require('socket.io'); // Removed - Not supported
+const helmet = require('helmet');
+const morgan = require('morgan');
+require('dotenv').config();
+
+const app = express();
+
+// Middleware
+app.use(helmet());
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+
+// Database connection
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/community-garden-tracker', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('MongoDB connection error:', err));
 
 // Import routes
 const authRoutes = require('./routes/auth');
-const userRoutes = require('./routes/users');
 const gardenRoutes = require('./routes/gardens');
 const plantRoutes = require('./routes/plants');
-const taskRoutes = require('./routes/tasks');
 const eventRoutes = require('./routes/events');
+const taskRoutes = require('./routes/tasks');
+const activityRoutes = require('./routes/activity');
 const chatRoutes = require('./routes/chat');
-const activityRoutes = require('./routes/activity'); // Import activity routes
 
-const app = express();
-// const server = http.createServer(app); // Removed
-// const io = new Server(server, { // Removed
-//   cors: {
-//     origin: '*', // Allow all origins for Socket.io
-//     methods: ['GET', 'POST'],
-//   },
-// });
 
-// Connect Database
-connectDB();
-
-// Init Middleware
-app.use(express.json({ extended: false }));
-app.use(cors()); // Enable CORS for all routes
-
-// Define Routes
+// Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
 app.use('/api/gardens', gardenRoutes);
 app.use('/api/plants', plantRoutes);
-app.use('/api/tasks', taskRoutes);
 app.use('/api/events', eventRoutes);
+app.use('/api/tasks', taskRoutes);
+app.use('/api/activity', activityRoutes);
 app.use('/api/chat', chatRoutes);
-app.use('/api/activity', activityRoutes); // Use activity routes
 
-// Socket.io connection - Removed
-// io.on('connection', (socket) => {
-//   console.log('New client connected');
-// 
-//   socket.on('joinGarden', (gardenId) => {
-//     socket.join(gardenId);
-//     console.log(`User joined garden room: ${gardenId}`);
-//   });
-// 
-//   socket.on('sendMessage', (message) => {
-//     // Save message to DB (handled by chat routes)
-//     // Emit message to all in garden room
-//     io.to(message.garden).emit('receiveMessage', message);
-//   });
-// 
-//   socket.on('disconnect', () => {
-//     console.log('Client disconnected');
-//   });
-// });
+// Health check route
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'OK', message: 'Community Garden Tracker API is running' });
+});
 
-// Serve static assets in production (for uploads)
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({
+    message: 'Something went wrong!',
+    error: process.env.NODE_ENV === 'development' ? err.message : 'Internal server error'
+  });
+});
 
-// Serve frontend in production - REMOVED
-// Vercel handles this via vercel.json
-// if (process.env.NODE_ENV === 'production') {
-//   // Serve static files from the frontend build directory
-//   app.use(express.static(path.join(__dirname, '../frontend/build')));
-// 
-//   // For any other route, serve the frontend's index.html
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.resolve(__dirname, '../frontend/build', 'index.html'));
-//   });
-// } else {
-//   app.get('/', (req, res) => {
-//     res.send('API is running...');
-//   });
-// }
+// 404 handler
+app.use('*', (req, res) => {
+  res.status(404).json({ message: 'Route not found' });
+});
 
-// const PORT = process.env.PORT || 5000; // Removed
-// server.listen(PORT, () => console.log(`Server started on port ${PORT}`)); // Removed
+// Handle both serverless and traditional deployment
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+    console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
+  });
+}
 
+// Export the app for Vercel
 module.exports = app;
