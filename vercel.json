@@ -9,30 +9,43 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "outputDirectory": "frontend/build"
+        "distDir": "build"
       }
     }
   ],
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/api.js"
+      "dest": "/backend/api.js"
     },
     {
-      "src": "/static/(.*)",
-      "dest": "frontend/build/static/$1"
+      "src": "^/static/(.*)",
+      "dest": "/frontend/build/static/$1"
     },
     {
-      "src": "/favicon.ico",
-      "dest": "frontend/build/favicon.ico"
+      "src": "^/manifest.json",
+      "dest": "/frontend/build/manifest.json"
     },
     {
-      "src": "/manifest.json",
-      "dest": "frontend/build/manifest.json"
+      "src": "^/favicon.ico",
+      "dest": "/frontend/build/favicon.ico"
     },
     {
-      "src": "/(.*)",
-      "dest": "frontend/build/index.html"
+      "src": "^/asset-manifest.json",
+      "dest": "/frontend/build/asset-manifest.json"
+    },
+    {
+      "src": "^/service-worker.js",
+      "headers": { "cache-control": "s-maxage=0" },
+      "dest": "/frontend/build/service-worker.js"
+    },
+    {
+      "src": "^/precache-manifest.(.*)",
+      "dest": "/frontend/build/precache-manifest.$1"
+    },
+    {
+      "src": "^/(.*)",
+      "dest": "/frontend/build/index.html"
     }
   ]
 }
