@@ -117,13 +117,13 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: -10 }}
                     /*
-                      --- UPDATED: Notification Dropdown Positioning ---
-                      - `w-screen`: Makes it full-width on mobile.
-                      - `max-w-sm`: Caps the width at 24rem (384px), good for most phones.
+                      --- *** UPDATED THIS LINE *** ---
+                      - `w-[90vw]`: Sets width to 90% of the viewport, so it never overflows.
+                      - `max-w-sm`: Caps the width at 24rem (384px) on larger screens.
                       - `sm:w-80`: Reverts to the original 20rem (320px) width on small screens and up.
-                      - `right-0`: Keeps it aligned to the right edge of its relative parent.
+                      - `right-0`: Aligns the right edge of the dropdown to the right edge of the parent.
                     */
-                    className="absolute right-0 mt-2 w-screen max-w-sm sm:w-80 bg-white dark:bg-gray-800 rounded-lg shadow-large border border-gray-200 dark:border-gray-700 z-50"
+                    className="absolute right-0 mt-2 w-[90vw] max-w-sm sm:w-80 bg-white dark:bg-gray-800 rounded-lg shadow-large border border-gray-200 dark:border-gray-700 z-50"
                   >
                     <div className="p-4">
                       <div className="flex items-center justify-between mb-4">
@@ -179,12 +179,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.95, y: -10 }}
                     /*
-                      --- UPDATED: User Menu Dropdown Positioning ---
-                      - `w-screen`: Makes it full-width on mobile.
-                      - `max-w-xs`: Caps the width at 20rem (320px), which is smaller.
+                      --- *** UPDATED THIS LINE *** ---
+                      - `w-[90vw]`: Sets width to 90% of the viewport.
+                      - `max-w-xs`: Caps the width at 20rem (320px).
                       - `sm:w-56`: Reverts to the original 14rem (224px) width on small screens and up.
                     */
-                    className="absolute right-0 mt-2 w-screen max-w-xs sm:w-56 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 overflow-hidden"
+                    className="absolute right-0 mt-2 w-[90vw] max-w-xs sm:w-56 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 z-50 overflow-hidden"
                   >
                     <div className="p-4 border-b border-gray-200 dark:border-gray-700">
                         <p className="font-semibold text-gray-800 dark:text-white">{user?.firstName} {user?.lastName}</p>

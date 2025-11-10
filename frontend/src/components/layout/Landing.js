@@ -28,7 +28,7 @@ const Landing = () => (
     <main>
       {/* Hero Section */}
       {/* --- UPDATED: Reduced padding further for mobile --- */}
-      <section className="flex flex-col items-center justify-center text-center pt-24 pb-16 px-4 relative">
+      <section className="flex flex-col items-center justify-center text-center pt-20 pb-12 sm:pt-24 sm:pb-16 px-4 relative">
         <div className="absolute inset-0 pointer-events-none">
           <img
             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
