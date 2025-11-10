@@ -27,7 +27,7 @@ const Landing = () => (
     <LandingNavbar />
     <main>
       {/* Hero Section */}
-      {/* --- UPDATED: Reduced padding further for mobile --- */}
+     
       <section className="flex flex-col items-center justify-center text-center pt-20 pb-12 sm:pt-24 sm:pb-16 px-4 relative">
         <div className="absolute inset-0 pointer-events-none">
           <img
@@ -37,17 +37,17 @@ const Landing = () => (
           />
         </div>
         <div className="relative z-10">
-          {/* --- UPDATED: Scaled text more aggressively for mobile --- */}
+         
           <h1 className="text-4xl leading-tight sm:text-5xl md:text-6xl font-extrabold text-green-800 drop-shadow-lg mb-4">
             Grow Together, Thrive Together
           </h1>
-          {/* --- UPDATED: Scaled text for mobile --- */}
+        
           <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
             Discover, join, and nurture community gardens. Track your plants, connect with neighbors, and make your city greener!
           </p>
           <Link
             to="/login"
-            // --- UPDATED: Scaled button padding and text for mobile ---
+       
             className="inline-flex items-center px-8 py-3 text-base sm:px-10 sm:py-4 sm:text-lg bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold rounded-full shadow-xl hover:scale-105 transition-transform"
           >
             Get Started <FiArrowRight className="ml-3" />
@@ -61,7 +61,7 @@ const Landing = () => (
           {features.map((f, i) => (
             <div
               key={i}
-              // --- UPDATED: Reduced padding for mobile ---
+            
               className="flex flex-col items-center bg-white rounded-xl shadow-lg p-6 md:p-8 hover:scale-105 transition-transform"
             >
               {f.icon}

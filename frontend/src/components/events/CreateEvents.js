@@ -22,7 +22,7 @@ const CreateEvent = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      // --- CHANGE: Made path relative ---
+     
       await axios.post(`/api/events/garden/${gardenId}`, form, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
@@ -39,11 +39,11 @@ const CreateEvent = () => {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-indigo-50 py-8">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          {/* --- UPDATED: Scaled text for mobile --- */}
+        
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Schedule a New Event</h1>
           <p className="text-gray-600">Organize an event for your garden community.</p>
         </div>
-        {/* --- UPDATED: Reduced padding for mobile --- */}
+       
         <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>

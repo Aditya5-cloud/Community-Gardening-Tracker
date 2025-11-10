@@ -16,7 +16,6 @@ const DiscoverCommunities = () => {
     const fetchCommunities = async () => {
       setLoading(true);
       try {
-        // --- CHANGE: Made path relative ---
         // Fetch all public communities first. This endpoint is public.
         const allRes = await axios.get('/api/gardens');
         let availableCommunities = allRes.data;
@@ -56,7 +55,6 @@ const DiscoverCommunities = () => {
         navigate('/login'); // Redirect to login if not authenticated
         return;
       }
-      // --- CHANGE: Made path relative ---
       await axios.post(`/api/gardens/${gardenId}/members`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
@@ -93,7 +91,6 @@ const DiscoverCommunities = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          {/* --- UPDATED: Scaled text for mobile --- */}
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Discover Communities</h1>
           <p className="text-base sm:text-lg text-gray-600">Find and join local gardening groups to grow together.</p>
         </motion.div>

@@ -41,7 +41,7 @@ const CreateCommunity = () => {
         console.log('Creating garden with data:', form);
         // console.log('Token:', localStorage.getItem('token'));
         
-        // --- CHANGE: Made path relative ---
+       
         const res = await axios.post('/api/gardens', form, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
@@ -137,8 +137,7 @@ const CreateCommunity = () => {
                 <option value="urban">Urban Farm</option>
                 <option value="school">School Garden</option>
                 <option value="therapeutic">Therapeutic Garden</option>
-                {/* <option value="rooftop">Rooftop Garden</option>
-                <option value="vertical">Vertical Garden</option> */}
+             
               </select>
             </div>
           </div>
@@ -200,15 +199,14 @@ const CreateCommunity = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 py-8">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+      
         <div className="text-center mb-8">
-          {/* --- UPDATED: Scaled text for mobile --- */}
+        
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Create Your Community Garden</h1>
           <p className="text-gray-600">Build a thriving community around sustainable gardening 🌱</p>
         </div>
 
-        {/* Progress Bar */}
-        {/* --- UPDATED: Reduced padding for mobile --- */}
+      
         <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 mb-8 border border-gray-100">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Step {currentStep} of 2</h2>
@@ -229,7 +227,7 @@ const CreateCommunity = () => {
         </div>
 
         {/* Form */}
-        {/* --- UPDATED: Reduced padding for mobile --- */}
+       
         <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
           <form onSubmit={handleSubmit}>
             {renderStepContent()}
@@ -282,7 +280,7 @@ const CreateCommunity = () => {
         </div>
 
         {/* Tips Section */}
-        {/* --- UPDATED: Reduced padding for mobile --- */}
+       
         <div className="bg-white rounded-2xl shadow-soft p-6 mt-8 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">💡 Community Building Tips</h3>
           {/* --- UPDATED: Made grid mobile-first (1 col) --- */}

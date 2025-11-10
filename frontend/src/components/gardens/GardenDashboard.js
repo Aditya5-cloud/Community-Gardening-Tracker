@@ -20,7 +20,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 
 const PlantDetailsModal = ({ plant, onClose }) => (
-    // --- UPDATED: Added padding for small screens ---
+ 
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
       {/* --- UPDATED: Reduced padding for mobile --- */}
       <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 max-w-md w-full">
@@ -42,9 +42,9 @@ const PlantDetailsModal = ({ plant, onClose }) => (
   );
 
   const EventDetailsModal = ({ event, onClose }) => (
-    // --- UPDATED: Added padding for small screens ---
+   
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
-      {/* --- UPDATED: Reduced padding for mobile --- */}
+     
       <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-gray-900">{event.title}</h2>
@@ -63,9 +63,9 @@ const PlantDetailsModal = ({ plant, onClose }) => (
   );
 
   const TaskDetailsModal = ({ task, onClose }) => (
-    // --- UPDATED: Added padding for small screens ---
+
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
-      {/* --- UPDATED: Reduced padding for mobile --- */}
+     
       <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-gray-900">{task.title}</h2>
@@ -110,7 +110,7 @@ const GardenDashboard = () => {
 
   const fetchGardenData = async () => {
     try {
-      // --- CHANGE: Made paths relative ---
+    
       const [gardenRes, plantsRes, eventsRes, tasksRes] = await Promise.all([
         axios.get(`/api/gardens/${gardenId}`),
         axios.get(`/api/plants/garden/${gardenId}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }),
@@ -138,7 +138,7 @@ useEffect(() => {
   const handleDeletePlant = async (plantId) => {
     if(window.confirm('Are you sure you want to delete this plant?')) {
       try {
-        // --- CHANGE: Made path relative ---
+
         await axios.delete(`/api/plants/${plantId}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
@@ -153,7 +153,7 @@ useEffect(() => {
 
   const handleCompleteTask = async (taskId) => {
     try {
-      // --- CHANGE: Made path relative ---
+   
       const res = await axios.patch(`/api/tasks/${taskId}/status`, { status: 'completed' }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
@@ -299,7 +299,7 @@ useEffect(() => {
                 </div>
               </div>
               <p className="text-gray-700 text-base sm:text-lg mb-4">{garden.description}</p>
-              {/* --- UPDATED: Stack info on mobile --- */}
+            
               <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-6 text-sm text-gray-600">
                 <div className="flex items-center">
                   <FiMapPin className="w-4 h-4 mr-2 text-green-600" />
@@ -322,9 +322,9 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* --- UPDATED: Made grid mobile-first (2 col) and responsive --- */}
+       
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-8">
-          {/* --- UPDATED: Reduced padding for mobile --- */}
+         
           <div className="bg-white rounded-xl shadow-soft p-4 md:p-6 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
@@ -398,10 +398,10 @@ useEffect(() => {
           </div>
         </div>
 
-        {/* --- UPDATED: Reduced padding for mobile --- */}
+        
         <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 mb-8 border border-gray-100">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Quick Actions</h2>
-          {/* --- UPDATED: Made grid mobile-first (2 col) --- */}
+         
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <Link
               to={`/plants/garden/${gardenId}/new`}
@@ -460,7 +460,7 @@ useEffect(() => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* --- UPDATED: Reduced padding for mobile --- */}
+          
             <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Plants ({stats.totalPlants})</h2>
                 <div className="space-y-4">
@@ -482,7 +482,7 @@ useEffect(() => {
                     ))}
                 </div>
             </div>
-            {/* --- UPDATED: Reduced padding for mobile --- */}
+            
             <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
                 <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Tasks ({stats.totalTasks})</h2>
                 <div className="space-y-4">
@@ -508,7 +508,7 @@ useEffect(() => {
             </div>
           </div>
 
-            {/* --- UPDATED: Reduced padding for mobile --- */}
+          
             <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100 mt-8">
               <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Upcoming Events</h2>
               <div className="space-y-4">
@@ -536,7 +536,7 @@ useEffect(() => {
           </div>
 
           <div className="lg:col-span-1 space-y-8">
-            {/* --- UPDATED: Reduced padding for mobile --- */}
+           
             <div className="bg-white rounded-2xl shadow-soft p-6 border border-gray-100">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Recent Activity</h2>
               <div className="space-y-4">

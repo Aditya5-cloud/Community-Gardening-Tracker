@@ -7,12 +7,12 @@ const LandingNavbar = () => (
     <div className="max-w-7xl mx-auto px-4 flex justify-between items-center h-16">
       <Link to="/" className="flex items-center gap-2">
         <span className="text-2xl font-bold text-green-700">🌱</span>
-        {/* --- UPDATED: Made text responsive --- */}
+      
         <span className="font-bold text-lg sm:text-xl text-gray-900">Garden Tracker</span>
       </Link>
       <Link
         to="/login"
-        // --- UPDATED: Made button padding and text responsive ---
+       
         className="inline-flex items-center px-4 py-2 text-sm sm:px-6 sm:py-2 sm:text-base bg-gradient-to-r from-green-500 to-blue-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transition-transform"
       >
         Get Started <FiArrowRight className="ml-2" />

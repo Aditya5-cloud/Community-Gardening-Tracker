@@ -18,13 +18,10 @@ const NotFound = () => {
         </div>
 
         {/* Error Message */}
-        {/* --- UPDATED: Scaled text for mobile --- */}
         <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">404</h1>
-        {/* --- UPDATED: Scaled text for mobile --- */}
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
           Page Not Found
         </h2>
-        {/* --- UPDATED: Reduced margin for mobile --- */}
         <p className="text-gray-600 mb-6 sm:mb-8">
           The page you're looking for seems to have wandered off into the garden. 
           Let's get you back to where you need to be.

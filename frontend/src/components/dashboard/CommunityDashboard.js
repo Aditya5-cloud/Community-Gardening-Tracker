@@ -31,7 +31,6 @@ const CommunityDashboard = () => {
           return;
         }
 
-        // --- CHANGE: Made paths relative ---
         const [mine, created] = await Promise.all([
           axios.get('/api/gardens/user/my-gardens', {
             headers: { Authorization: `Bearer ${token}` }
@@ -58,7 +57,6 @@ const CommunityDashboard = () => {
   const handleDelete = async (gardenId) => {
     setDeletingGarden(gardenId);
     try {
-      // --- CHANGE: Made path relative ---
       await axios.delete(`/api/gardens/${gardenId}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
@@ -73,7 +71,6 @@ const CommunityDashboard = () => {
   const handleLeave = async (gardenId) => {
     setLeavingGarden(gardenId);
     try {
-      // --- CHANGE: Made path relative ---
       await axios.post(`/api/gardens/${gardenId}/leave`, {}, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
@@ -93,18 +90,15 @@ const CommunityDashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          {/* --- UPDATED: Scaled text for mobile --- */}
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Welcome back, <span className="text-green-600">{user?.firstName || 'Gardener'}</span>! 🌱
           </h1>
-          {/* --- UPDATED: Scaled text for mobile --- */}
           <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
             What would you like to do today?
           </p>
         </div>
 
         {/* Create and Join Community Buttons */}
-        {/* --- UPDATED: Stack buttons on mobile, adjust size --- */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
             <Link
               to="/gardens/new"
@@ -123,7 +117,6 @@ const CommunityDashboard = () => {
         </div>
 
 
-        {/* --- UPDATED: Made grid mobile-first (1 col) --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-2xl shadow-soft p-6 border border-gray-100">
             <div className="flex items-center justify-between">
@@ -188,7 +181,7 @@ const CommunityDashboard = () => {
                         <FiUsers className="w-4 h-4 mr-1" />
                         <span>{garden.members.length || 0} members</span>
                       </div>
-                      {/* --- UPDATED: Stack buttons on small screens --- */}
+            
                       <div className="flex flex-col sm:flex-row gap-2">
                         <Link to={`/gardens/${garden._id}/dashboard`} className="w-full sm:w-auto text-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
                           View Dashboard
@@ -207,7 +200,6 @@ const CommunityDashboard = () => {
               )}
             </div>
 
-            {/* --- UPDATED: Reduced padding for mobile --- */}
             <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Joined Communities</h2>
               {joinedCommunities.length === 0 ? (
@@ -231,7 +223,6 @@ const CommunityDashboard = () => {
                         <FiUsers className="w-4 h-4 mr-1" />
                         <span>{garden.members.length || 0} members</span>
                       </div>
-                      {/* --- UPDATED: Stack buttons on small screens --- */}
                       <div className="flex flex-col sm:flex-row gap-2">
                         <Link to={`/gardens/${garden._id}/dashboard`} className="w-full sm:w-auto text-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium">
                           View Dashboard

@@ -153,36 +153,6 @@ const Sidebar = ({ onClose }) => {
         })}
       </nav>
 
-      {/* Quick Actions
-      <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-        <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
-          Quick Actions
-        </h3>
-        <div className="space-y-2">
-          <Link
-            to="/gardens/new"
-            className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
-          >
-            <FiPlus className="mr-3 h-4 w-4" />
-            New Garden
-          </Link>
-          <Link
-            to="/plants/new"
-            className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
-          >
-            <FiPlus className="mr-3 h-4 w-4" />
-            Add Plant
-          </Link>
-          <Link
-            to="/tasks/new"
-            className="flex items-center px-3 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors duration-200"
-          >
-            <FiPlus className="mr-3 h-4 w-4" />
-            Create Task
-          </Link>
-        </div>
-      </div> */}
-
       {/* Footer */}
       <div className="p-4 border-t border-gray-200 dark:border-gray-700">
         <div className="text-center">
