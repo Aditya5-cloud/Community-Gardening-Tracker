@@ -27,8 +27,8 @@ const Landing = () => (
     <LandingNavbar />
     <main>
       {/* Hero Section */}
-      {/* --- UPDATED: Reduced padding for mobile --- */}
-      <section className="flex flex-col items-center justify-center text-center pt-24 pb-12 md:pt-32 md:pb-16 px-4 relative">
+      {/* --- UPDATED: Reduced padding further for mobile --- */}
+      <section className="flex flex-col items-center justify-center text-center pt-24 pb-16 px-4 relative">
         <div className="absolute inset-0 pointer-events-none">
           <img
             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
@@ -37,8 +37,8 @@ const Landing = () => (
           />
         </div>
         <div className="relative z-10">
-          {/* --- UPDATED: Scaled text for mobile --- */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-green-800 drop-shadow-lg mb-4">
+          {/* --- UPDATED: Scaled text more aggressively for mobile --- */}
+          <h1 className="text-4xl leading-tight sm:text-5xl md:text-6xl font-extrabold text-green-800 drop-shadow-lg mb-4">
             Grow Together, Thrive Together
           </h1>
           {/* --- UPDATED: Scaled text for mobile --- */}
@@ -57,12 +57,12 @@ const Landing = () => (
 
       {/* Features Section */}
       <section className="py-12 bg-white/80 backdrop-blur-md">
-        {/* --- UPDATED: Added px-4 for mobile --- */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
           {features.map((f, i) => (
             <div
               key={i}
-              className="flex flex-col items-center bg-white rounded-xl shadow-lg p-8 hover:scale-105 transition-transform"
+              // --- UPDATED: Reduced padding for mobile ---
+              className="flex flex-col items-center bg-white rounded-xl shadow-lg p-6 md:p-8 hover:scale-105 transition-transform"
             >
               {f.icon}
               <h3 className="mt-4 text-2xl font-bold text-green-700">{f.title}</h3>
