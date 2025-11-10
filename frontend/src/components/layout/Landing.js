@@ -27,7 +27,8 @@ const Landing = () => (
     <LandingNavbar />
     <main>
       {/* Hero Section */}
-      <section className="flex flex-col items-center justify-center text-center pt-32 pb-16 px-4 relative">
+      {/* --- UPDATED: Reduced padding for mobile --- */}
+      <section className="flex flex-col items-center justify-center text-center pt-24 pb-12 md:pt-32 md:pb-16 px-4 relative">
         <div className="absolute inset-0 pointer-events-none">
           <img
             src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
@@ -36,15 +37,18 @@ const Landing = () => (
           />
         </div>
         <div className="relative z-10">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-green-800 drop-shadow-lg mb-4">
+          {/* --- UPDATED: Scaled text for mobile --- */}
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-green-800 drop-shadow-lg mb-4">
             Grow Together, Thrive Together
           </h1>
-          <p className="text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
+          {/* --- UPDATED: Scaled text for mobile --- */}
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-700 mb-8 max-w-2xl mx-auto">
             Discover, join, and nurture community gardens. Track your plants, connect with neighbors, and make your city greener!
           </p>
           <Link
             to="/login"
-            className="inline-flex items-center px-10 py-4 bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold rounded-full shadow-xl hover:scale-105 transition-transform text-lg"
+            // --- UPDATED: Scaled button padding and text for mobile ---
+            className="inline-flex items-center px-8 py-3 text-base sm:px-10 sm:py-4 sm:text-lg bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold rounded-full shadow-xl hover:scale-105 transition-transform"
           >
             Get Started <FiArrowRight className="ml-3" />
           </Link>
@@ -53,6 +57,7 @@ const Landing = () => (
 
       {/* Features Section */}
       <section className="py-12 bg-white/80 backdrop-blur-md">
+        {/* --- UPDATED: Added px-4 for mobile --- */}
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-4">
           {features.map((f, i) => (
             <div
@@ -69,7 +74,8 @@ const Landing = () => (
 
       {/* Discover Communities Section */}
       <section className="py-12">
-        <h2 className="text-3xl font-bold text-center text-green-800 mb-8">
+        {/* --- UPDATED: Scaled text for mobile --- */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-green-800 mb-8 px-4">
           Discover Community Gardens Near You
         </h2>
         <DiscoverCommunities />

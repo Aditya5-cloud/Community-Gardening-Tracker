@@ -45,10 +45,12 @@ class ErrorBoundary extends React.Component {
             </div>
 
             {/* Error Message */}
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            {/* --- UPDATED: Scaled text for mobile --- */}
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
               Oops! Something went wrong
             </h2>
-            <p className="text-gray-600 mb-8">
+            {/* --- UPDATED: Reduced margin for mobile --- */}
+            <p className="text-gray-600 mb-6 sm:mb-8">
               We encountered an unexpected error. Please try refreshing the page or return to the dashboard.
             </p>
 
@@ -92,4 +94,4 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default ErrorBoundary; 
+export default ErrorBoundary;

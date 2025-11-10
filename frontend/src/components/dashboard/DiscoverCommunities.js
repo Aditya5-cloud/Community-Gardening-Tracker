@@ -93,8 +93,9 @@ const DiscoverCommunities = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-10"
         >
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">Discover Communities</h1>
-          <p className="text-lg text-gray-600">Find and join local gardening groups to grow together.</p>
+          {/* --- UPDATED: Scaled text for mobile --- */}
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Discover Communities</h1>
+          <p className="text-base sm:text-lg text-gray-600">Find and join local gardening groups to grow together.</p>
         </motion.div>
 
         {loading ? (
@@ -105,12 +106,12 @@ const DiscoverCommunities = () => {
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center py-16 bg-white rounded-2xl shadow-soft border"
+            className="text-center py-12 sm:py-16 bg-white rounded-2xl shadow-soft border px-4"
           >
             <div className="mx-auto w-16 h-16 bg-gradient-to-br from-green-100 to-blue-100 rounded-full flex items-center justify-center mb-6">
               <FiSearch className="text-green-600 text-3xl" />
             </div>
-            <h2 className="text-2xl font-semibold text-gray-800 mb-2">No New Communities to Join</h2>
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-2">No New Communities to Join</h2>
             <p className="text-gray-600 mb-6">It looks like you've joined all available communities, or there are none yet. Why not start your own?</p>
             <Link to="/gardens/new" className="inline-flex items-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors shadow-md hover:shadow-lg">
               <FiPlus className="w-5 h-5 mr-2" />
@@ -119,7 +120,7 @@ const DiscoverCommunities = () => {
           </motion.div>
         ) : (
           <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -144,9 +145,10 @@ const DiscoverCommunities = () => {
                     </div>
                   </div>
                   <div className="px-6 pb-6 mt-auto">
-                    <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                        <span className="flex items-center"><FiMapPin className="w-4 h-4 mr-1.5 text-gray-400" /> {garden.location}</span>
-                        <span className="flex items-center"><FiUsers className="w-4 h-4 mr-1.5 text-gray-400" /> {garden.memberCount} members</span>
+                    {/* --- UPDATED: Stack info on mobile --- */}
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-sm text-gray-500 mb-4 gap-2 sm:gap-0">
+                        <span className="flex items-center"><FiMapPin className="w-4 h-4 mr-1.5 text-gray-400 flex-shrink-0" /> {garden.location}</span>
+                        <span className="flex items-center"><FiUsers className="w-4 h-4 mr-1.5 text-gray-400 flex-shrink-0" /> {garden.memberCount} members</span>
                     </div>
                     <button
                       onClick={() => handleJoin(garden._id)}

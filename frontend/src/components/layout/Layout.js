@@ -16,7 +16,8 @@ const Layout = ({ children }) => {
 
           {/* Main content area */}
           <main className="flex-1 overflow-x-hidden overflow-y-auto">
-            <div className="container mx-auto px-6 py-8">
+            {/* --- UPDATED: Reduced padding for mobile --- */}
+            <div className="container mx-auto px-4 py-6 md:px-6 md:py-8">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

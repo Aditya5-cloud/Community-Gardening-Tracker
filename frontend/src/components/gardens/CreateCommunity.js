@@ -202,14 +202,16 @@ const CreateCommunity = () => {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Your Community Garden</h1>
+          {/* --- UPDATED: Scaled text for mobile --- */}
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Create Your Community Garden</h1>
           <p className="text-gray-600">Build a thriving community around sustainable gardening 🌱</p>
         </div>
 
         {/* Progress Bar */}
-        <div className="bg-white rounded-2xl shadow-soft p-8 mb-8 border border-gray-100">
+        {/* --- UPDATED: Reduced padding for mobile --- */}
+        <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 mb-8 border border-gray-100">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Step {currentStep} of 2</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Step {currentStep} of 2</h2>
             <span className="text-sm text-gray-500">{Math.round(getStepProgress())}% Complete</span>
           </div>
           
@@ -227,12 +229,13 @@ const CreateCommunity = () => {
         </div>
 
         {/* Form */}
-        <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
+        {/* --- UPDATED: Reduced padding for mobile --- */}
+        <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
           <form onSubmit={handleSubmit}>
             {renderStepContent()}
 
             {/* Navigation Buttons */}
-            <div className="flex justify-between mt-8 pt-6 border-t border-gray-200">
+            <div className="flex justify-between items-center mt-8 pt-6 border-t border-gray-200">
               {currentStep > 1 && (
                 <button
                   type="button"
@@ -279,9 +282,11 @@ const CreateCommunity = () => {
         </div>
 
         {/* Tips Section */}
+        {/* --- UPDATED: Reduced padding for mobile --- */}
         <div className="bg-white rounded-2xl shadow-soft p-6 mt-8 border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">💡 Community Building Tips</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+          {/* --- UPDATED: Made grid mobile-first (1 col) --- */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-600">
             <div className="flex items-start">
               <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
               <p>Start with clear goals and regular communication</p>

@@ -65,19 +65,22 @@ const Profile = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50 p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
         {/* Profile Header */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8 text-center">
+        {/* --- UPDATED: Reduced padding for mobile --- */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8 text-center">
           <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center text-white text-4xl font-bold mx-auto mb-4">
             {user?.firstName?.charAt(0) || 'U'}
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">
+          {/* --- UPDATED: Scaled text for mobile --- */}
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
             {user?.firstName} {user?.lastName}
           </h1>
           <p className="text-gray-600 mt-1">@{user?.username}</p>
         </div>
 
         {/* User Information */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-          <h2 className="text-2xl font-semibold text-gray-800 mb-6">My Info</h2>
+        {/* --- UPDATED: Reduced padding for mobile --- */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-6">My Info</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-700">
             <div className="flex items-center">
               <FiMail className="w-6 h-6 text-green-500 mr-4" />
@@ -104,8 +107,10 @@ const Profile = () => {
         </div>
 
         {/* Statistics */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mb-6">My Stats</h2>
+        {/* --- UPDATED: Reduced padding for mobile --- */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-6">My Stats</h2>
+            {/* --- UPDATED: Made grid mobile-first (1 col) --- */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                  <div className="text-center p-4 bg-green-50 rounded-xl">
                     <FiHeart className="w-8 h-8 text-green-500 mx-auto mb-2"/>
@@ -129,7 +134,8 @@ const Profile = () => {
         <div className="text-center">
           <button
             onClick={handleLogout}
-            className="inline-flex items-center px-8 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-md hover:shadow-lg"
+            // --- UPDATED: Scaled button padding for mobile ---
+            className="inline-flex items-center px-6 py-3 sm:px-8 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-md hover:shadow-lg"
           >
             <FiLogOut className="w-5 h-5 mr-3" />
             Logout

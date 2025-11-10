@@ -20,8 +20,10 @@ import { useAuth } from '../../contexts/AuthContext';
 import toast from 'react-hot-toast';
 
 const PlantDetailsModal = ({ plant, onClose }) => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full">
+    // --- UPDATED: Added padding for small screens ---
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+      {/* --- UPDATED: Reduced padding for mobile --- */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-gray-900">{plant.name}</h2>
           <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-200">
@@ -40,8 +42,10 @@ const PlantDetailsModal = ({ plant, onClose }) => (
   );
 
   const EventDetailsModal = ({ event, onClose }) => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full">
+    // --- UPDATED: Added padding for small screens ---
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+      {/* --- UPDATED: Reduced padding for mobile --- */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-gray-900">{event.title}</h2>
           <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-200">
@@ -59,8 +63,10 @@ const PlantDetailsModal = ({ plant, onClose }) => (
   );
 
   const TaskDetailsModal = ({ task, onClose }) => (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-      <div className="bg-white rounded-2xl shadow-lg p-8 max-w-md w-full">
+    // --- UPDATED: Added padding for small screens ---
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+      {/* --- UPDATED: Reduced padding for mobile --- */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 max-w-md w-full">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-bold text-gray-900">{task.title}</h2>
           <button onClick={onClose} className="p-2 rounded-full hover:bg-gray-200">
@@ -279,7 +285,8 @@ useEffect(() => {
         {selectedEvent && <EventDetailsModal event={selectedEvent} onClose={() => setSelectedEvent(null)} />}
         {selectedTask && <TaskDetailsModal task={selectedTask} onClose={() => setSelectedTask(null)} />}
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-2xl shadow-soft p-8 mb-8 border border-gray-100">
+        {/* --- UPDATED: Reduced padding for mobile --- */}
+        <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 mb-8 border border-gray-100">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
             <div className="flex-1">
               <div className="flex items-center mb-4">
@@ -287,12 +294,13 @@ useEffect(() => {
                   <FiFeather className={`w-6 h-6 text-${getCategoryColor(garden.category)}-600`} />
                 </div>
                 <div>
-                  <h1 className="text-3xl font-bold text-gray-900">{garden.name}</h1>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">{garden.name}</h1>
                   <p className="text-gray-600 capitalize">{garden.category} Garden</p>
                 </div>
               </div>
-              <p className="text-gray-700 text-lg mb-4">{garden.description}</p>
-              <div className="flex flex-wrap items-center gap-6 text-sm text-gray-600">
+              <p className="text-gray-700 text-base sm:text-lg mb-4">{garden.description}</p>
+              {/* --- UPDATED: Stack info on mobile --- */}
+              <div className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-6 text-sm text-gray-600">
                 <div className="flex items-center">
                   <FiMapPin className="w-4 h-4 mr-2 text-green-600" />
                   <span>{garden.location}</span>
@@ -314,132 +322,136 @@ useEffect(() => {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-8">
-          <div className="bg-white rounded-xl shadow-soft p-6 border border-gray-100">
+        {/* --- UPDATED: Made grid mobile-first (2 col) and responsive --- */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-8">
+          {/* --- UPDATED: Reduced padding for mobile --- */}
+          <div className="bg-white rounded-xl shadow-soft p-4 md:p-6 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Members</p>
-                                 <p className="text-2xl font-bold text-gray-900">{stats.totalMembers}</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Members</p>
+                                 <p className="text-xl sm:text-2xl font-bold text-gray-900">{stats.totalMembers}</p>
               </div>
-              <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <FiUsers className="w-5 h-5 text-blue-600" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <FiUsers className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-soft p-6 border border-gray-100">
+          <div className="bg-white rounded-xl shadow-soft p-4 md:p-6 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Active Members</p>
-                                 <p className="text-2xl font-bold text-green-600">{stats.activeMembers}</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Active</p>
+                                 <p className="text-xl sm:text-2xl font-bold text-green-600">{stats.activeMembers}</p>
               </div>
-              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <FiTrendingUp className="w-5 h-5 text-green-600" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <FiTrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-soft p-6 border border-gray-100">
+          <div className="bg-white rounded-xl shadow-soft p-4 md:p-6 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Total Plants</p>
-                                 <p className="text-2xl font-bold text-purple-600">{stats.totalPlants}</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Plants</p>
+                                 <p className="text-xl sm:text-2xl font-bold text-purple-600">{stats.totalPlants}</p>
               </div>
-              <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                <FiFeather className="w-5 h-5 text-purple-600" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <FiFeather className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-soft p-6 border border-gray-100">
+          <div className="bg-white rounded-xl shadow-soft p-4 md:p-6 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Upcoming Events</p>
-                                 <p className="text-2xl font-bold text-orange-600">{stats.upcomingEvents}</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Events</p>
+                                 <p className="text-xl sm:text-2xl font-bold text-orange-600">{stats.upcomingEvents}</p>
               </div>
-              <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                <FiCalendar className="w-5 h-5 text-orange-600" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                <FiCalendar className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-soft p-6 border border-gray-100">
+          <div className="bg-white rounded-2xl shadow-soft p-4 md:p-6 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Completed Tasks</p>
-                                 <p className="text-2xl font-bold text-green-600">{stats.completedTasks}</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Done</p>
+                                 <p className="text-xl sm:text-2xl font-bold text-green-600">{stats.completedTasks}</p>
               </div>
-              <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <FiCheckCircle className="w-5 h-5 text-green-600" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <FiCheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-xl shadow-soft p-6 border border-gray-100">
+          <div className="bg-white rounded-2xl shadow-soft p-4 md:p-6 border border-gray-100">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Pending Tasks</p>
-                                 <p className="text-2xl font-bold text-yellow-600">{stats.pendingTasks}</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-600">Pending</p>
+                                 <p className="text-xl sm:text-2xl font-bold text-yellow-600">{stats.pendingTasks}</p>
               </div>
-              <div className="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                <FiClock className="w-5 h-5 text-yellow-600" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <FiClock className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600" />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-soft p-8 mb-8 border border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Quick Actions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* --- UPDATED: Reduced padding for mobile --- */}
+        <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 mb-8 border border-gray-100">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Quick Actions</h2>
+          {/* --- UPDATED: Made grid mobile-first (2 col) --- */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             <Link
               to={`/plants/garden/${gardenId}/new`}
-              className="group bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-6 text-white hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105"
+              className="group bg-gradient-to-r from-green-500 to-green-600 rounded-xl p-4 sm:p-6 text-white hover:from-green-600 hover:to-green-700 transition-all duration-300 transform hover:scale-105"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-bold mb-2">Add Plants</h3>
+                  <h3 className="text-base sm:text-lg font-bold mb-2">Add Plants</h3>
                   <p className="text-green-100 text-sm">Record new plants</p>
                 </div>
-                <FiPlus className="w-8 h-8 text-green-100 group-hover:scale-110 transition-transform duration-300" />
+                <FiPlus className="w-6 h-6 sm:w-8 sm:h-8 text-green-100 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </Link>
 
             <Link
               to={`/events/garden/${gardenId}/new`}
-              className="group bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-6 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105"
+              className="group bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl p-4 sm:p-6 text-white hover:from-blue-600 hover:to-blue-700 transition-all duration-300 transform hover:scale-105"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-bold mb-2">Schedule Events</h3>
+                  <h3 className="text-base sm:text-lg font-bold mb-2">Schedule Events</h3>
                   <p className="text-blue-100 text-sm">Plan activities</p>
                 </div>
-                <FiCalendar className="w-8 h-8 text-blue-100 group-hover:scale-110 transition-transform duration-300" />
+                <FiCalendar className="w-6 h-6 sm:w-8 sm:h-8 text-blue-100 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </Link>
 
             <Link
               to={`/tasks/garden/${gardenId}/new`}
-              className="group bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl p-6 text-white hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105"
+              className="group bg-gradient-to-r from-yellow-500 to-yellow-600 rounded-xl p-4 sm:p-6 text-white hover:from-yellow-600 hover:to-yellow-700 transition-all duration-300 transform hover:scale-105"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-bold mb-2">Create Tasks</h3>
+                  <h3 className="text-base sm:text-lg font-bold mb-2">Create Tasks</h3>
                   <p className="text-yellow-100 text-sm">Assign work</p>
                 </div>
-                <FiCheckCircle className="w-8 h-8 text-yellow-100 group-hover:scale-110 transition-transform duration-300" />
+                <FiCheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-100 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </Link>
 
             <Link
               to={`/chat/garden/${gardenId}`}
-              className="group bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-6 text-white hover:from-purple-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
+              className="group bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl p-4 sm:p-6 text-white hover:from-purple-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-lg font-bold mb-2">Community Chat</h3>
-                  <p className="text-purple-100 text-sm">Connect with members</p>
+                  <h3 className="text-base sm:text-lg font-bold mb-2">Community Chat</h3>
+                  <p className="text-purple-100 text-sm">Connect</p>
                 </div>
-                <FiMessageSquare className="w-8 h-8 text-purple-100 group-hover:scale-110 transition-transform duration-300" />
+                <FiMessageSquare className="w-6 h-6 sm:w-8 sm:h-8 text-purple-100 group-hover:scale-110 transition-transform duration-300" />
               </div>
             </Link>
           </div>
@@ -448,8 +460,9 @@ useEffect(() => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Plants ({stats.totalPlants})</h2>
+            {/* --- UPDATED: Reduced padding for mobile --- */}
+            <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Plants ({stats.totalPlants})</h2>
                 <div className="space-y-4">
                     {plants.map(plant => (
                     <div key={plant._id} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
@@ -469,8 +482,9 @@ useEffect(() => {
                     ))}
                 </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
-                <h2 className="text-2xl font-bold text-gray-900 mb-6">Tasks ({stats.totalTasks})</h2>
+            {/* --- UPDATED: Reduced padding for mobile --- */}
+            <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Tasks ({stats.totalTasks})</h2>
                 <div className="space-y-4">
                     {tasks.map(task => (
                     <div key={task._id} className={`flex items-center justify-between p-4 rounded-xl ${task.status === 'completed' ? 'bg-green-50' : 'bg-gray-50'}`}>
@@ -494,23 +508,23 @@ useEffect(() => {
             </div>
           </div>
 
-
-            <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100 mt-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Upcoming Events</h2>
+            {/* --- UPDATED: Reduced padding for mobile --- */}
+            <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100 mt-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-6">Upcoming Events</h2>
               <div className="space-y-4">
                                  {getUpcomingEvents().map(event => (
-                  <div key={event._id} className="flex items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl border border-orange-200">
-                    <div className="flex items-center">
-                      <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4">
-                        <FiCalendar className="w-6 h-6 text-orange-600" />
+                  <div key={event._id} className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-xl border border-orange-200">
+                    <div className="flex items-center mb-2 sm:mb-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-lg flex items-center justify-center mr-4 flex-shrink-0">
+                        <FiCalendar className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
                       </div>
                       <div>
                         <h3 className="font-semibold text-gray-900">{event.title}</h3>
                         <p className="text-sm text-gray-600">{new Date(event.date).toLocaleDateString()} at {event.time}</p>
                       </div>
                     </div>
-                    <div className="text-right">
-                                             <p className="text-sm text-gray-600">{event.attendees?.length || 0} attending</p>
+                    <div className="text-left sm:text-right w-full sm:w-auto">
+                                             <p className="text-sm text-gray-600 mb-1 sm:mb-0">{event.attendees?.length || 0} attending</p>
                       <button onClick={() => setSelectedEvent(event)} className="text-orange-600 hover:text-orange-700 text-sm font-medium">
                         View Details
                       </button>
@@ -522,6 +536,7 @@ useEffect(() => {
           </div>
 
           <div className="lg:col-span-1 space-y-8">
+            {/* --- UPDATED: Reduced padding for mobile --- */}
             <div className="bg-white rounded-2xl shadow-soft p-6 border border-gray-100">
               <h2 className="text-xl font-bold text-gray-900 mb-6">Recent Activity</h2>
               <div className="space-y-4">

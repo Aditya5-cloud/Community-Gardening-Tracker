@@ -93,33 +93,37 @@ const CommunityDashboard = () => {
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-white to-blue-50">
       <div className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">
+          {/* --- UPDATED: Scaled text for mobile --- */}
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Welcome back, <span className="text-green-600">{user?.firstName || 'Gardener'}</span>! 🌱
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          {/* --- UPDATED: Scaled text for mobile --- */}
+          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto">
             What would you like to do today?
           </p>
         </div>
 
         {/* Create and Join Community Buttons */}
-        <div className="flex justify-center gap-6 mb-12">
+        {/* --- UPDATED: Stack buttons on mobile, adjust size --- */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12">
             <Link
               to="/gardens/new"
-              className="inline-flex items-center px-8 py-4 bg-green-600 text-white font-semibold text-lg rounded-xl hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-lg bg-green-600 text-white font-semibold rounded-xl hover:bg-green-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              <FiPlus className="w-6 h-6 mr-3" />
+              <FiPlus className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
               Create a Community
             </Link>
             <Link
               to="/discover"
-              className="inline-flex items-center px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 text-base sm:px-8 sm:py-4 sm:text-lg bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1"
             >
-              <FiSearch className="w-6 h-6 mr-3" />
+              <FiSearch className="w-5 h-5 sm:w-6 sm:h-6 mr-3" />
               Join a Community
             </Link>
         </div>
 
 
+        {/* --- UPDATED: Made grid mobile-first (1 col) --- */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           <div className="bg-white rounded-2xl shadow-soft p-6 border border-gray-100">
             <div className="flex items-center justify-between">
@@ -160,7 +164,8 @@ const CommunityDashboard = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-3 space-y-8">
-            <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
+            {/* --- UPDATED: Reduced padding for mobile --- */}
+            <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Created Communities</h2>
               {createdCommunities.length === 0 ? (
                 <div className="text-center py-12">
@@ -183,14 +188,15 @@ const CommunityDashboard = () => {
                         <FiUsers className="w-4 h-4 mr-1" />
                         <span>{garden.members.length || 0} members</span>
                       </div>
-                      <div className="flex gap-2">
-                        <Link to={`/gardens/${garden._id}/dashboard`} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
+                      {/* --- UPDATED: Stack buttons on small screens --- */}
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <Link to={`/gardens/${garden._id}/dashboard`} className="w-full sm:w-auto text-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium">
                           View Dashboard
                         </Link>
                         <button
                           onClick={() => handleDelete(garden._id)}
                           disabled={deletingGarden === garden._id}
-                          className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-medium disabled:opacity-50"
+                          className="w-full sm:w-auto px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm font-medium disabled:opacity-50"
                         >
                           {deletingGarden === garden._id ? 'Deleting...' : 'Delete'}
                         </button>
@@ -201,7 +207,8 @@ const CommunityDashboard = () => {
               )}
             </div>
 
-            <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
+            {/* --- UPDATED: Reduced padding for mobile --- */}
+            <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Joined Communities</h2>
               {joinedCommunities.length === 0 ? (
                 <div className="text-center py-12">
@@ -224,14 +231,15 @@ const CommunityDashboard = () => {
                         <FiUsers className="w-4 h-4 mr-1" />
                         <span>{garden.members.length || 0} members</span>
                       </div>
-                      <div className="flex gap-2">
-                        <Link to={`/gardens/${garden._id}/dashboard`} className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium">
+                      {/* --- UPDATED: Stack buttons on small screens --- */}
+                      <div className="flex flex-col sm:flex-row gap-2">
+                        <Link to={`/gardens/${garden._id}/dashboard`} className="w-full sm:w-auto text-center px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium">
                           View Dashboard
                         </Link>
                         <button
                           onClick={() => handleLeave(garden._id)}
                           disabled={leavingGarden === garden._id}
-                          className="px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors text-sm font-medium disabled:opacity-50"
+                          className="w-full sm:w-auto px-4 py-2 bg-yellow-600 text-white rounded-lg hover:bg-yellow-700 transition-colors text-sm font-medium disabled:opacity-50"
                         >
                           {leavingGarden === garden._id ? 'Leaving...' : 'Leave'}
                         </button>

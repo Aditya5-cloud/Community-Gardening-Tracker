@@ -39,10 +39,12 @@ const CreateTask = () => {
     <div className="min-h-screen bg-gradient-to-br from-yellow-50 via-white to-orange-50 py-8">
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create a New Task</h1>
+          {/* --- UPDATED: Scaled text for mobile --- */}
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Create a New Task</h1>
           <p className="text-gray-600">Assign a new task for your garden.</p>
         </div>
-        <div className="bg-white rounded-2xl shadow-soft p-8 border border-gray-100">
+        {/* --- UPDATED: Reduced padding for mobile --- */}
+        <div className="bg-white rounded-2xl shadow-soft p-6 md:p-8 border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
