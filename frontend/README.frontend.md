@@ -322,7 +322,7 @@ This project is licensed under the ISC License.
 
 For support and questions:
 - Create an issue in the repository
-- Contact the development team
+- Contact : ag801036@gmail.com
 - Check the documentation
 
 ---
